@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@blog/*": ["src/*"]
+    },
+    "outDir": "./lib",
+    "declaration": true,
+    "module": "ES2022",
+    "moduleResolution": "node"
+  },
+  "include": ["src/*.ts", "src/*.vue"],
+  "exclude": ["node_modules"]
+}

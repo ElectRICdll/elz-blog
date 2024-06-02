@@ -1,0 +1,21 @@
+$white: #fff;
+$black: #000;
+$danger: red;
+
+$light-theme: (
+  primary: #0b1e43,
+  sub: #0b1e43,
+  border: #fff,
+  text: #000,
+  background: $white,
+);
+
+$dark-theme: (
+  primary: #0b1e43,
+  sub: #0b1e43,
+  border: #fff,
+  text: #000,
+  background: $black,
+);
+
+$current-theme: $light-theme;
