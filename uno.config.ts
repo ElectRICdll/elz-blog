@@ -1,39 +1,45 @@
 import {
-    defineConfig,
-    presetAttributify,
-    presetIcons,
-    presetTypography,
-    presetUno,
-    presetWebFonts,
-    transformerDirectives,
-    transformerVariantGroup
-  } from 'unocss'
+  defineConfig,
+  presetAttributify,
+  presetIcons,
+  presetTypography,
+  presetUno,
+  transformerDirectives,
+  transformerVariantGroup,
+} from 'unocss'
 
-import '/theme.config.scss';
-  
 export default defineConfig({
   theme: {
     colors: {
-      primary: '$currentTheme.primary',
-      secondary: '$currentTheme.sub',
-      danger: '$currentTheme.danger',
+      primary: 'var(--primary-color)',
+      sub: 'var(--sub-color)',
+      border: 'var(--border-color)',
+      text: 'var(--text-color)',
+      bg: 'var(--bg-color)',
     },
   },
   presets: [
     presetUno(),
     presetAttributify(),
-    presetIcons(),
+    presetIcons({}),
     presetTypography(),
-    presetWebFonts({
-      fonts: {
-        sans: ['Arial', 'sans-serif'],
-        serif: ['Georgia', 'serif'],
-        mono: ['Monaco', 'monospace'],
+  ],
+  rules: [
+    ['blog-border', { border: '1px solid var(--border-color)' }],
+    [
+      /^blog-border-(t|r|b|l)$/,
+      ([, direction]) => {
+        const directions = {
+          t: '-top',
+          r: '-right',
+          b: '-bottom',
+          l: '-left',
+        }
+        return {
+          [`border${directions[direction]}`]: '1px solid var(--border-color)',
+        }
       },
-    }),
+    ],
   ],
-  transformers: [
-    transformerDirectives(),
-    transformerVariantGroup(),
-  ],
+  transformers: [transformerDirectives(), transformerVariantGroup()],
 })
