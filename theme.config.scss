@@ -1,21 +1,32 @@
-$white: #fff;
-$black: #000;
-$danger: red;
+$color: (
+  white: #fff,
+  black: #000,
+  danger: red,
+);
 
-$light-theme: (
-  primary: #0b1e43,
+$light: (
+  primary: #2e7219,
+  sub: #0b1e43,
+  border: rgba(209, 208, 208, 0.596),
+  text: #000,
+  bg: map-get($color, white),
+  bg-2: rgb(243, 241, 241),
+);
+
+$dark: (
+  primary: #2e7219,
   sub: #0b1e43,
   border: #fff,
   text: #000,
-  background: $white,
+  bg: map-get($color, black),
 );
 
-$dark-theme: (
-  primary: #0b1e43,
-  sub: #0b1e43,
-  border: #fff,
-  text: #000,
-  background: $black,
-);
+$current-theme: $light;
 
-$current-theme: $light-theme;
+:root {
+  --primary-color: #{map-get($current-theme, primary)};
+  --sub-color: #{map-get($current-theme, sub)};
+  --border-color: #{map-get($current-theme, border)};
+  --text-color: #{map-get($current-theme, text)};
+  --bg-color: #{map-get($current-theme, bg)};
+}
